@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwight Ledet — Geothermal & Drilling Operations Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate-900: #0e1117;
+    --slate-800: #161b27;
+    --slate-700: #1e2535;
+    --slate-600: #2a3347;
+    --slate-500: #3d4f6a;
+    --amber: #d4872a;
+    --amber-light: #e8a84a;
+    --amber-dim: rgba(212,135,42,0.15);
+    --cream: #f5f0e8;
+    --cream-dim: rgba(245,240,232,0.7);
+    --cream-muted: rgba(245,240,232,0.45);
+    --white: #ffffff;
+    --geo-line: rgba(212,135,42,0.25);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--slate-900);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── GEOLOGICAL BACKGROUND ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        172deg,
+        transparent 0px,
+        transparent 60px,
+        rgba(212,135,42,0.03) 60px,
+        rgba(212,135,42,0.03) 61px
+      ),
+      repeating-linear-gradient(
+        -8deg,
+        transparent 0px,
+        transparent 120px,
+        rgba(212,135,42,0.02) 120px,
+        rgba(212,135,42,0.02) 121px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14,17,23,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--geo-line);
+    padding: 0 32px;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--amber); }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 96px 0 72px;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 8vw, 108px);
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--amber-light);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream-dim);
+    max-width: 620px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.35s;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--cream-muted);
+  }
+
+  .meta-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .meta-item a {
+    color: var(--cream-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .meta-item a:hover { color: var(--amber-light); }
+
+  .hero-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--geo-line) 40%, transparent 100%);
+    margin-top: 64px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.7s;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 72px 0 0;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--geo-line);
+  }
+
+  /* ─── SUMMARY ─── */
+  .summary-text {
+    font-family: var(--font-display);
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--cream-dim);
+    max-width: 800px;
+  }
+
+  .summary-text strong {
+    font-weight: 600;
+    color: var(--cream);
+  }
+
+  /* ─── COMPETENCIES ─── */
+  .competency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 8px;
+  }
+
+  .competency-item {
+    background: var(--slate-700);
+    border: 1px solid rgba(212,135,42,0.1);
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--cream-dim);
+    letter-spacing: 0.01em;
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .competency-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--amber);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+  }
+
+  .competency-item:hover {
+    background: var(--slate-600);
+    color: var(--cream);
+    border-color: var(--geo-line);
+  }
+
+  .competency-item:hover::before { transform: scaleY(1); }
+
+  /* ─── EXPERIENCE TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--amber) 0%, var(--geo-line) 60%, transparent 100%);
+  }
+
+  .timeline-entry {
+    position: relative;
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .timeline-entry.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -38px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--amber);
+    background: var(--slate-900);
+    transition: background 0.2s;
+  }
+
+  .timeline-entry:hover .timeline-dot {
+    background: var(--amber);
+  }
+
+  .entry-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .entry-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .entry-dates {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .entry-org {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .entry-location {
+    color: var(--cream-muted);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .entry-body {
+    color: var(--cream-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 720px;
+  }
+
+  .entry-bullets {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .entry-bullets li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  .entry-bullets li::before {
+    content: '—';
+    color: var(--amber);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Sub-entries (client projects) */
+  .sub-entries {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sub-entry {
+    border-left: 2px solid var(--slate-600);
+    padding-left: 16px;
+  }
+
+  .sub-entry-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .sub-entry-body {
+    font-size: 13px;
+    color: var(--cream-muted);
+    line-height: 1.75;
+    max-width: 700px;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .edu-card {
+    background: var(--slate-800);
+    border: 1px solid rgba(212,135,42,0.08);
+    padding: 28px 24px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .edu-card:hover {
+    background: var(--slate-700);
+    border-color: var(--geo-line);
+  }
+
+  .edu-degree {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .edu-school {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .edu-desc {
+    font-size: 13px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-group-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    background: var(--slate-700);
+    border: 1px solid rgba(212,135,42,0.15);
+    color: var(--cream-dim);
+    font-size: 12px;
+    padding: 4px 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── GEOGRAPHY ─── */
+  .geo-regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 8px;
+  }
+
+  .geo-region {
+    background: linear-gradient(135deg, var(--slate-700), var(--slate-800));
+    border: 1px solid var(--geo-line);
+    color: var(--cream-dim);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 16px;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+
+  .geo-region:hover {
+    background: var(--amber-dim);
+    color: var(--cream);
+    border-color: var(--amber-light);
+  }
+
+  /* ─── CONTACT FOOTER ─── */
+  .contact-footer {
+    margin-top: 80px;
+    padding: 48px 0;
+    border-top: 1px solid var(--geo-line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .contact-cta {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream-dim);
+  }
+
+  .contact-cta strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--cream);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--cream-muted);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--geo-line);
+    transition: all 0.25s;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-link:hover {
+    background: var(--amber-dim);
+    color: var(--amber-light);
+    border-color: var(--amber);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .page-wrapper { padding: 0 20px 60px; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 64px 0 48px; }
+    .timeline { padding-left: 20px; }
+    .timeline-dot { left: -26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Dwight Ledet</span>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-tag">Curriculum Vitæ</p>
+    <h1 class="hero-name">Dwight<br><em>Ledet</em></h1>
+    <p class="hero-subtitle">Senior Geothermal & Drilling Operations Leader</p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="dot"></span>Copenhagen, Denmark</div>
+      <div class="meta-item"><span class="dot"></span><a href="tel:+4550272429">+45 50 27 24 29</a></div>
+      <div class="meta-item"><span class="dot"></span><a href="mailto:dwight.ledet@protonmail.com">dwight.ledet@protonmail.com</a></div>
+      <div class="meta-item"><span class="dot"></span>USA / EU Citizen</div>
+    </div>
+    <div class="hero-divider"></div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section id="summary">
+    <p class="section-label reveal">Profile</p>
+    <h2 class="section-title reveal">Professional Summary</h2>
+    <p class="summary-text reveal">
+      Results-driven geothermal and drilling operations leader with <strong>20+ years</strong> of international project management across geothermal, Managed Pressure Drilling (MPD), directional, and underbalanced operations. A unique combination of deep technical field expertise and advanced credentials in <strong>energy law, geothermal systems research, and data science</strong>. Proven track record delivering complex, high-stakes projects for major operators including ExxonMobil, Chevron, Baker Hughes, Shell, and national energy companies — across <strong>Kenya, Kazakhstan, Qatar, Australia, Denmark, Japan, and beyond</strong>. Dual US/EU citizenship enables seamless deployment across global geothermal markets.
+    </p>
+  </section>
+
+  <!-- COMPETENCIES -->
+  <section id="competencies">
+    <p class="section-label reveal">Expertise</p>
+    <h2 class="section-title reveal">Core Competencies</h2>
+    <div class="competency-grid reveal">
+      <div class="competency-item">Geothermal Project Management</div>
+      <div class="competency-item">MPD / CBHP / PMCD Operations</div>
+      <div class="competency-item">Well Engineering & Planning</div>
+      <div class="competency-item">High-Temperature / High-Pressure Drilling</div>
+      <div class="competency-item">Directional & Horizontal Drilling</div>
+      <div class="competency-item">Borehole Heat Exchanger Systems</div>
+      <div class="competency-item">Thermal Response Testing</div>
+      <div class="competency-item">HAZID / HAZOP</div>
+      <div class="competency-item">Crew Training & Certification</div>
+      <div class="competency-item">Energy & Environmental Law</div>
+      <div class="competency-item">Data Analysis (Python / R / SQL)</div>
+      <div class="competency-item">International Stakeholder Management</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Career</p>
+    <h2 class="section-title reveal">Professional Experience</h2>
+
+    <div class="timeline">
+
+      <!-- Beyond Energy -->
+      <div class="timeline-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-header">
+          <h3 class="entry-title">MPD Operations Manager</h3>
+          <span class="entry-dates">June 2024 — Present</span>
+        </div>
+        <div class="entry-org">Beyond Energy Service & Technology <span class="entry-location">· Newfoundland, Canada</span></div>
+        <p class="entry-body">Led all phases of a Constant Bottom Hole Pressure (CBHP) MPD project for ExxonMobil on the Hebron offshore platform, one of Canada's most technically demanding offshore installations.</p>
+        <ul class="entry-bullets">
+          <li>Directed pre-planning, mobilization, and installation of the full MPD package on schedule and within budget.</li>
+          <li>Managed crew buildout, onboarding, and competency-based training programs for a multidisciplinary offshore team.</li>
+          <li>Implemented safe, efficient drilling practices through rigorous well engineering, logistics coordination, and real-time CBHP oversight.</li>
+        </ul>
+      </div>
+
+      <!-- Baker Hughes -->
+      <div class="timeline-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-header">
+          <h3 class="entry-title">Geothermal Development Manager</h3>
+          <span class="entry-dates">May 2022 — June 2024</span>
+        </div>
+        <div class="entry-org">Baker Hughes — Geothermal</div>
+        <p class="entry-body">Led multidisciplinary geothermal development initiatives, serving as the technical authority bridging field operations, engineering, and executive decision-making.</p>
+        <ul class="entry-bullets">
+          <li>Advised senior management on technical strategy, commercial viability, and risk across Baker Hughes's geothermal project portfolio.</li>
+          <li>Ensured rigorous integration of work packages, constraints, and milestones into project planning frameworks, maintaining accurate reporting for internal and client-facing stakeholders.</li>
+          <li>Represented the geothermal function in business solutions presentations to executive leadership, contributing to strategic energy transition growth initiatives.</li>
+          <li>Served as the subject-matter expert connecting Baker Hughes's MPD/drilling technology heritage to emerging geothermal applications (EGS, HTHP wells, closed-loop systems).</li>
+        </ul>
+      </div>
+
+      <!-- UiS Research -->
+      <div class="timeline-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-header">
+          <h3 class="entry-title">Geothermal Research Associate</h3>
+          <span class="entry-dates">2020 — 2022</span>
+        </div>
+        <div class="entry-org">University of Stavanger — Energy, Environment &amp; Society <span class="entry-location">· Norway</span></div>
+        <p class="entry-body">Conducted applied geothermal research focused on shallow geothermal heating systems, contributing to both academic knowledge and industry-applicable technology development.</p>
+        <ul class="entry-bullets">
+          <li>Developed and analysed borehole heat exchanger (BHE) systems and thermal response testing (TRT) methodologies in partnership with MuoviTech Geoenergy, Sweden.</li>
+          <li>Active member of the University of Stavanger Energy Group – Geothermal Development Program.</li>
+          <li>Master's thesis: <em>A Critical History of Geothermal Energy</em> — a comprehensive examination of the sector's technical, policy, and commercial evolution.</li>
+        </ul>
+      </div>
+
+      <!-- Independent Consultant -->
+      <div class="timeline-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-header">
+          <h3 class="entry-title">Independent Professional Consultant</h3>
+          <span class="entry-dates">2007 — 2019</span>
+        </div>
+        <div class="entry-org">Self-Employed <span class="entry-location">· International</span></div>
+        <p class="entry-body">Delivered specialist drilling project management and technical supervision for geothermal and oil & gas operators across Africa, the Middle East, Europe, Central Asia, and the Americas. Selected engagements:</p>
+
+        <div class="sub-entries">
+          <div class="sub-entry">
+            <div class="sub-entry-title">Geothermal Development Company — Menengai Crater, Kenya</div>
+            <p class="sub-entry-body">Project manager for Kenya's national geothermal drilling operations. Planned and executed HTHP directional and underbalanced drilling programs supporting the country's transition to indigenous renewable power.</p>
+          </div>
+          <div class="sub-entry">
+            <div class="sub-entry-title">RasGas / ExxonMobil & QatarGas / ConocoPhillips — Doha, Qatar</div>
+            <p class="sub-entry-body">Project managed and provided on-site supervision for multiple PMCD campaigns in high-H₂S, fractured carbonate reservoirs. Authored rig- and well-specific procedures, contingency plans, and trained operator and rig personnel.</p>
+          </div>
+          <div class="sub-entry">
+            <div class="sub-entry-title">AGIP North Caspian Operating Co. / ExxonMobil — Kashagan, Kazakhstan</div>
+            <p class="sub-entry-body">On-site supervision of PMCD operations in the Kashagan, Kairan, and Aktote fields — extreme H₂S concentrations (&gt;25%) and highly fractured carbonates. Instituted procedures, conducted HAZID/HAZOP, and certified crews across 5 rigs.</p>
+          </div>
+          <div class="sub-entry">
+            <div class="sub-entry-title">Royal Dutch Shell — Rijswijk / Groningen, Netherlands</div>
+            <p class="sub-entry-body">Drilling engineering supervisor for Shell's SCADA automation project. Provided office-based engineering support and on-site supervision during deployment across the Groningen gas field.</p>
+          </div>
+          <div class="sub-entry">
+            <div class="sub-entry-title">Chevron — Perth / Barrow Island, Australia (Gorgon Project)</div>
+            <p class="sub-entry-body">Supervised directional drilling campaign for horizontal production wells (Mardie B), vertical/J-well designs, and CO₂ injection wells for Chevron's landmark Gorgon LNG Project.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Baker Hughes Inteq -->
+      <div class="timeline-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-header">
+          <h3 class="entry-title">Drilling Systems Supervisor</h3>
+          <span class="entry-dates">2001 — 2007</span>
+        </div>
+        <div class="entry-org">Baker Hughes Inteq <span class="entry-location">· International</span></div>
+        <p class="entry-body">On-site drilling systems supervisor across diverse international assignments, developing expertise in complex reservoir conditions and varied operational environments across 4 continents.</p>
+        <ul class="entry-bullets">
+          <li>Gabon — Grondin & Rabi Kounga offshore fields</li>
+          <li>Thailand — Pattani Trough, Malay Basin, Sirikit Oilfield</li>
+          <li>Russia — Chayvo Field, Sakhalin Shelf</li>
+          <li>Saudi Arabia — Ghawar Field, Eastern Province</li>
+          <li>Denmark / Netherlands — Gorm Field & Dutch North Sea sector</li>
+          <li>Japan — Yufutsu Oil & Gas Field, Hokkaido</li>
+          <li>UAE — Bu Hasa Oil Field, West Abu Dhabi</li>
+          <li>USA — Bakken, Jonah, Denver-Julesburg & Piceance Basins</li>
+        </ul>
+      </div>
+
+    </div><!-- /timeline -->
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label reveal">Academic</p>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-degree">LLM / MLS — Energy &amp; Environmental Law &amp; Policy</div>
+        <div class="edu-school">Texas A&amp;M University — School of Law</div>
+        <p class="edu-desc">Advanced legal analysis of the global energy industry with a focus on regulatory frameworks, environmental policy, and renewable energy law. Directly applicable to geothermal project permitting, land rights, PPA negotiation, and energy transition policy.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">MA — Energy, Environment &amp; Society</div>
+        <div class="edu-school">University of Stavanger · Norway</div>
+        <p class="edu-desc">Research focus on geothermal heating system development, borehole heat exchangers, and thermal response testing. Thesis: <em>A Critical History of Geothermal Energy.</em></p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">BA — History of Science</div>
+        <div class="edu-school">Oregon State University</div>
+        <p class="edu-desc">Interdisciplinary examination of scientific ideas and their relationship to industry, policy, and culture. Thesis: <em>Karl Marx and the American Civil War.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">Technical</p>
+    <h2 class="section-title reveal">Skills &amp; Tools</h2>
+    <div class="skills-grid reveal">
+      <div>
+        <div class="skill-group-label">Programming &amp; Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">PHP</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MPD / CBHP</span>
+          <span class="skill-tag">PMCD / CHCD</span>
+          <span class="skill-tag">Directional Drilling</span>
+          <span class="skill-tag">Well Control</span>
+          <span class="skill-tag">HAZID / HAZOP</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Geothermal</div>
+        <div class="skill-tags">
+          <span class="skill-tag">BHE Systems</span>
+          <span class="skill-tag">Thermal Response Testing</span>
+          <span class="skill-tag">EGS</span>
+          <span class="skill-tag">HTHP Wells</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Geographic Reach</div>
+        <div class="geo-regions">
+          <span class="geo-region">Africa</span>
+          <span class="geo-region">Middle East</span>
+          <span class="geo-region">Europe</span>
+          <span class="geo-region">Central Asia</span>
+          <span class="geo-region">Asia-Pacific</span>
+          <span class="geo-region">North America</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FOOTER -->
+  <div class="contact-footer" id="contact">
+    <p class="contact-cta"><strong>Open to opportunities</strong> in the global geothermal space.</p>
+    <div class="contact-links">
+      <a href="mailto:dwight.ledet@protonmail.com" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        Email
+      </a>
+      <a href="tel:+4550272429" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 7.84 19.79 19.79 0 0 1 1 4.14 2 2 0 0 1 2.97 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg>
+        Call
+      </a>
+    </div>
+  </div>
+
+</div><!-- /page-wrapper -->
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .timeline-entry').forEach(el => observer.observe(el));
+
+  // Stagger timeline entries
+  document.querySelectorAll('.timeline-entry').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+  });
+</script>
+</body>
+</html>
